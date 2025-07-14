@@ -5,7 +5,7 @@ import { authVerify } from '../middlewares/authmiddleware.js';
 
 const loanTypeRoutes = express.Router();
 
-loanTypeRoutes.get('/',authVerify, getLoanTypes);
+loanTypeRoutes.get('/', getLoanTypes);
 loanTypeRoutes.get('/:id' ,getLoanTypeById);
 loanTypeRoutes.post('/', createLoanType);
 loanTypeRoutes.put('/:id', updateLoanType);
