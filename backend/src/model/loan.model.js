@@ -1,4 +1,5 @@
-const { Schema, default: mongoose, model } = require("mongoose");
+import mongoose, { model, Schema } from "mongoose";
+
 
 const loanSchema = new Schema({
   loanType: {

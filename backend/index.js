@@ -7,6 +7,7 @@ import productRoutes from "./src/routes/product.routes.js";
 import multer from "multer";
 import { storage } from "./src/config/cloudinary.js";
 import loanTypeRoutes from "./src/routes/loan.routes.js";
+import applyLoan from "./src/routes/apply-loan.routes.js";
 
 const app = express();
 const PORT = 8080;
@@ -26,6 +27,8 @@ connectDb();
 app.use("/api", authRoutes);
 app.use("/product", productRoutes)
 app.use("/loanType", loanTypeRoutes)
+app.use("/loan", applyLoan)
+
 
 
 
