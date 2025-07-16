@@ -4,10 +4,9 @@ import dotenv from "dotenv";
 import connectDb from "./src/config/db.js";
 import authRoutes from "./src/routes/auth.routes.js";
 import productRoutes from "./src/routes/product.routes.js";
-import multer from "multer";
-import { storage } from "./src/config/cloudinary.js";
 import loanTypeRoutes from "./src/routes/loan.routes.js";
 import applyLoan from "./src/routes/apply-loan.routes.js";
+import gereralRoute from "./src/routes/general.routes.js";
 
 const app = express();
 const PORT = 8080;
@@ -28,26 +27,8 @@ app.use("/api", authRoutes);
 app.use("/product", productRoutes)
 app.use("/loanType", loanTypeRoutes)
 app.use("/loan", applyLoan)
+app.use('/upload', gereralRoute)
 
-
-
-
-const upload = multer({storage})
-
-app.post('/upload', upload.single('image'), (req,res)=> {
-  try {
-
-    return res.status(201).json({
-      imageUrl: req.file.path
-    })
-    
-  } catch (error) {
-    return res.status(500).json({
-      message: "Image not upload",
-      error: error.message
-    })
-  }
-})
 
 app.listen(PORT, () => {
   console.log("server is running");
