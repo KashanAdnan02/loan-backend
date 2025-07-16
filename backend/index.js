@@ -3,10 +3,11 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDb from "./src/config/db.js";
 import authRoutes from "./src/routes/auth.routes.js";
-import productRoutes from "./src/routes/product.routes.js";
+
 import loanTypeRoutes from "./src/routes/loan.routes.js";
 import applyLoan from "./src/routes/apply-loan.routes.js";
 import gereralRoute from "./src/routes/general.routes.js";
+import productRoutes from "./src/routes/product.routes.js";
 
 const app = express();
 const PORT = 8080;
@@ -24,10 +25,11 @@ connectDb();
 
 //route
 app.use("/api", authRoutes);
-app.use("/product", productRoutes)
+
 app.use("/loanType", loanTypeRoutes)
 app.use("/loan", applyLoan)
 app.use('/upload', gereralRoute)
+app.use('/product', productRoutes)
 
 
 app.listen(PORT, () => {
